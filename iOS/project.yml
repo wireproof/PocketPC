@@ -1,0 +1,38 @@
+name: PocketPC
+options:
+  bundleIdPrefix: com.wireproof
+  deploymentTarget:
+    iOS: '15.0'
+targets:
+  PocketPC:
+    type: application
+    platform: iOS
+    sources: [Sources]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.wireproof.pocketpc
+        PRODUCT_NAME: PocketPC
+        SWIFT_VERSION: '5.0'
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: '1,2'
+        MARKETING_VERSION: 0.1.1
+        CURRENT_PROJECT_VERSION: 4
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UIFileSharingEnabled: YES
+        INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Pocket PC
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+    dependencies:
+      - framework: Frameworks/PocketCore.framework
+        embed: true
+      - framework: Frameworks/libglib-2.0.0.framework
+        embed: true
+      - framework: Frameworks/libpixman-1.0.framework
+        embed: true
+      - framework: Frameworks/libffi.8.framework
+        embed: true
+      - framework: Frameworks/libintl.8.framework
+        embed: true
+      - framework: Frameworks/libiconv.2.framework
+        embed: true
