@@ -6,11 +6,13 @@ An experimental iOS frontend for the Pocket2Droid Device Emulator machine. The a
 
 Version 0.1.1 is an early development build. A previous 0.1.0 build booted Windows Mobile 6 to the Today screen on an iPhone Duo; touch was reported working by the owner. Version 0.1.1 adds Emulator, Sessions, Settings, and About navigation and avoids reading and decoding unchanged screen frames. The version 0.1.1 UI and icon have not yet been visually confirmed on a physical device. Guest performance is limited by interpreted CPU emulation. Audio, persistence across restart, and lifecycle behavior still require verification.
 
+**Device verification:** Development build 0.1.1 (build 4) was installed on an iPad, and the installed build number was verified. The app was not launched, so the UI, controls, and guest operation were not verified in this build. This is a development status note, not a public tagged release or a downloadable IPA.
+
 ## Contents
 
 - `iOS/` contains the SwiftUI frontend, generated icon, XcodeGen specification and embedded iOS frameworks used by the development build. Use your own Apple Development team and signing profile.
 - `upstream/Pocket2Droid/` contains the source snapshot from [Pocket2Droid](https://github.com/samsixx6/Pocket2Droid) commit `60d0f71de23c83c39d98ce6984049b492d3867cf`, including local iOS portability and diagnostic changes. The snapshot's source-hash manifest describes upstream files and therefore does not describe the modified files here.
-- `ROMs/WM6-PPC-USA-240x320.bin` is the supplied Windows Mobile 6 Device Emulator image; SHA-256 `b6ca519070e84da0bf6886fb3bde606ce098a0cfaffff436b8faf46a9a580bf7`. The ROM is a Microsoft system image. Its rights and redistribution terms are distinct from this project's source licenses and have not been independently verified.
+- Windows Mobile system images have separate Microsoft copyright and redistribution terms; this project's source licenses do not cover them.
 - `scripts/ios-compat/` contains the libucontext compatibility header used when cross-building the core. `scripts/utm-build-dependencies-v5.0.8.sh` is the upstream UTM dependency build script for reference.
 
 ## Build the frontend
@@ -22,7 +24,7 @@ xcodegen generate --spec iOS/project.yml
 open iOS/PocketPC.xcodeproj
 ```
 
-Select your own development team and a suitable provisioning profile in Xcode. The project currently records the author's team ID, so change it for your account. The bundled ROM is a repository asset and is not embedded in the IPA: import a compatible `.bin` with the app's file picker. A device must have sufficient free space for the ROM and its separate guest storage.
+Select your own development team and a suitable provisioning profile in Xcode. The project currently records the author's team ID, so change it for your account. A compatible, legitimately obtained system image is required and is not embedded in the app. Import the image with the app's file picker. A device must have sufficient free space for the ROM and its separate guest storage.
 
 ## Core provenance and limitations
 
